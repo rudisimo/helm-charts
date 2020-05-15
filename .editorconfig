@@ -1,0 +1,14 @@
+root = true
+
+[*]
+insert_final_newline = false
+trim_trailing_whitespace = true
+
+[{*.yml,*.yaml}]
+indent_size = 2
+indent_style = space
+trim_trailing_whitespace = false
+
+[{*.less,*.jade,*.json}]
+indent_size = 2
+indent_style = space

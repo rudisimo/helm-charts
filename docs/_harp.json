@@ -1,0 +1,7 @@
+{
+  "globals": {
+    "title": "Helm Charts",
+    "description": "Helm repository sandbox for rudisimo",
+    "uri": "https://rudisimo.github.io/helm-charts"
+  }
+}
