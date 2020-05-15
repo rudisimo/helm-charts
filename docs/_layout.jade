@@ -1,12 +1,16 @@
 doctype
-html
+html(lang="en")
   head
     meta(charset="UTF-8")
     title= title
     meta(name="viewport", content="width=device-width,initial-scale=1")
     meta(name="description", content="#{ description }")
-    link(rel="stylesheet", href="main.css", type="text/css", media="screen")
+    link(rel="stylesheet", href="reset.css", type="text/css", media="screen")
+    link(rel="stylesheet", href="github.css", type="text/css", media="screen")
     link(rel="shortcut icon", href="favicon.ico")
   body
     .content
       != yield
+
+    a(href="https://github.com/rudisimo/helm-charts")
+      img(style="position: absolute; top: 0; left: 0; border: 0; width: 149px; height: 149px;" src="http://aral.github.com/fork-me-on-github-retina-ribbons/left-graphite@2x.png" alt="Fork me on GitHub")
