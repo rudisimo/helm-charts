@@ -1,6 +1,6 @@
 # Helm Charts
 
-![Github Pages](https://github.com/rudisimo/helm-charts/workflows/Github%20Pages/badge.svg?branch=master)
+![Release](https://github.com/rudisimo/helm-charts/workflows/Release/badge.svg)
 
 This repository contains curated application definitions for Kubernetes Helm. For more information about installing and using Helm, see its
 [README.md](https://github.com/kubernetes/helm/tree/master/README.md). To get a quick introduction to Charts see this [chart document](https://github.com/kubernetes/helm/blob/master/docs/charts.md).
