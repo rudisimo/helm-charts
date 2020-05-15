@@ -40,8 +40,8 @@ jobs:
 
       - name: Configure Helm
         run: |
-          bash -e <(curl -sSkL https://raw.githubusercontent.com/helm/helm/master/scripts/get)
-          helm init --client-only
+          bash -e <(curl -sSkL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3)
+          helm version
           helm repo add stable https://kubernetes-charts.storage.googleapis.com/
           helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
 
