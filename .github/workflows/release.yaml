@@ -23,33 +23,33 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           keep_files: true
-          publish_dir: dist
+          publish_dir: ./dist
           publish_branch: gh-pages
 
-  # helm-charts:
-  #   needs: gh-pages
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v1
+  helm-charts:
+    needs: gh-pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
 
-  #     - name: Configure Git
-  #       run: |
-  #         git config user.name "$GITHUB_ACTOR"
-  #         git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
-  #     - name: Configure Helm
-  #       run: |
-  #         bash -e <(curl -sSkL https://raw.githubusercontent.com/helm/helm/master/scripts/get)
-  #         helm init --client-only
-  #         helm repo add stable https://kubernetes-charts.storage.googleapis.com/
-  #         helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
+      - name: Configure Helm
+        run: |
+          bash -e <(curl -sSkL https://raw.githubusercontent.com/helm/helm/master/scripts/get)
+          helm init --client-only
+          helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+          helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
 
-  #     - name: Release Helm Charts
-  #       uses: helm/chart-releaser-action@master
-  #       with:
-  #         version: v1.0.0-beta.1
-  #         charts_dir: charts
-  #         charts_repo_url: https://rudisimo.github.io/helm-charts
-  #       env:
-  #         CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Release Helm Charts
+        uses: helm/chart-releaser-action@master
+        with:
+          version: v1.0.0-beta.1
+          charts_dir: charts
+          charts_repo_url: https://rudisimo.github.io/helm-charts/
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
