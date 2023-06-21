@@ -10,14 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Build Landing Page
         run: |
           export PATH=$PWD/node_modules/.bin:$PATH
           npm install --no-save --no-package-lock harp
           harp compile docs dist
-
       - name: Deploy Github Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -31,24 +31,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Configure Git
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-
       - name: Configure Helm
         run: |
-          bash -e <(curl -sSkL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3)
+          bash -e <(curl -sSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3)
           helm version
           helm repo add stable https://kubernetes-charts.storage.googleapis.com/
           helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
-
       - name: Release Helm Charts
-        uses: helm/chart-releaser-action@master
+        uses: helm/chart-releaser-action@v1.5.0
         with:
-          version: v1.0.0-beta.1
           charts_dir: charts
           charts_repo_url: https://rudisimo.github.io/helm-charts/
         env:
