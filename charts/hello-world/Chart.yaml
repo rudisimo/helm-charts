@@ -3,7 +3,7 @@ description: Helm chart used to deploy a Hello World application to Kubernetes.
 type: application
 name: hello-world
 home: https://github.com/rudisimo/helm-charts
-version: 1.0.0
+version: 1.0.1
 appVersion: 1.0.0
 sources:
   - https://github.com/rudisimo/helm-charts
