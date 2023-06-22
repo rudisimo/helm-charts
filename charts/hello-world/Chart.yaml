@@ -1,5 +1,5 @@
 apiVersion: v2
-appVersion: 1.1.0
+appVersion: 1.0.0
 # dependencies:
 #   - name: nginx-ingress
 #     version: 4.7.0
@@ -13,4 +13,4 @@ maintainers:
     url: https://github.com/rudisimo
 sources:
   - https://github.com/rudisimo/helm-charts
-version: 1.0.1
+version: 1.1.0
