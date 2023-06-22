@@ -1,0 +1,20 @@
+{
+  "name": "@rudisimo/helm-charts",
+  "version": "0.0.0",
+  "description": "This repository contains curated Helm Charts for Kubernetes",
+  "homepage": "https://rudisimo.github.io/helm-charts/",
+  "scripts": {
+    "build:docs": "npx harp docs dist",
+    "start": "npx harp docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rudisimo/helm-charts.git"
+  },
+  "author": "rudisimo",
+  "license": "MIT",
+  "devDependencies": {
+    "harp": "^0.46.1",
+    "less": "^4.1.3"
+  }
+}
