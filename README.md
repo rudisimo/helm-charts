@@ -1,16 +1,24 @@
 # Helm Charts
 
-![Release](https://github.com/rudisimo/helm-charts/workflows/Release/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Release](https://github.com/rudisimo/helm-charts/workflows/Release/badge.svg)](https://github.com/rudisimo/helm-charts/actions/workflows/release.yaml)
 
-This repository contains curated application definitions for Kubernetes Helm. For more information about installing and using Helm, see its
-[README.md](https://github.com/kubernetes/helm/tree/master/README.md). To get a quick introduction to Charts see this [chart document](https://github.com/kubernetes/helm/blob/master/docs/charts.md).
+## Usage
 
-## How do I install these charts?
+[Helm](https://helm.sh) must be installed to use the charts.
+Please refer to Helm's [documentation](https://helm.sh/docs/) to get started.
 
-Run the following commands to add the repository to Helm, and install a `hello-world` application:
-```
+Once Helm is set up properly, add the repository as follows:
+
+```shell
 helm repo add rudisimo http://rudisimo.github.io/helm-charts
-helm install hello-world rudisimo/hello-world
+helm repo update
 ```
 
-For more information on using Helm, refer to the [Helm's documentation](https://github.com/kubernetes/helm#docs).
+You can then run `helm search repo rudisimo` to see the available charts.
+
+**Note:** To learn how to install a specific chart, follow the instructions in its `README.md` file.
+
+## License
+
+Licensed under the [MIT license](https://github.com/rudisimo/helm-charts/blob/master/LICENSE.txt).
