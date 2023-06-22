@@ -3,6 +3,22 @@ entries:
   hello-world:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2023-06-22T06:58:29.330250555Z"
+    description: Helm chart used to deploy a Hello World application to Kubernetes.
+    digest: 35679b58d06abc64322325e269a13e1c2a04f266f29b2b9332475a3d30ab45cd
+    home: https://github.com/rudisimo/helm-charts
+    kubeVersion: '>= 1.20.0-0'
+    maintainers:
+    - name: rudisimo
+      url: https://github.com/rudisimo
+    name: hello-world
+    sources:
+    - https://github.com/rudisimo/helm-charts
+    urls:
+    - https://github.com/rudisimo/helm-charts/releases/download/hello-world-1.1.0/hello-world-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2023-06-21T23:07:13.679814689Z"
     description: Helm chart used to deploy a Hello World application to Kubernetes.
     digest: d10f2cb781aea29c628d22307b4fa310a94aafef05ee0b66ea1cf3db0e8a50a4
@@ -33,4 +49,4 @@ entries:
     urls:
     - https://github.com/rudisimo/helm-charts/releases/download/hello-world-1.0.0/hello-world-1.0.0.tgz
     version: 1.0.0
-generated: "2023-06-21T23:07:13.679825389Z"
+generated: "2023-06-22T06:58:29.330262556Z"
