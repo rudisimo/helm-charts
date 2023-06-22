@@ -8,7 +8,7 @@ on:
       - '**.md'
   push:
     branches:
-      - main
+      - master
     paths-ignore:
       - '**.md'
   workflow_dispatch:
@@ -61,7 +61,7 @@ jobs:
           npm install
           npm run build:docs
       - name: Deploy Github Pages
-        if: (github.ref == 'refs/heads/main')
+        if: (github.ref == 'refs/heads/master')
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -91,7 +91,7 @@ jobs:
           helm repo add stable https://charts.helm.sh/stable
           helm repo update
       - name: Release Helm Charts
-        if: (github.ref == 'refs/heads/main')
+        if: (github.ref == 'refs/heads/master')
         uses: helm/chart-releaser-action@v1.5.0
         with:
           charts_dir: charts
