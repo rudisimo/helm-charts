@@ -1,23 +1,91 @@
 # Default values for hello-world.
 # This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
 
-replicaCount: 1
+# Beware when changing values here. You should know what you are doing!
+# Access the values with {{ .Values.key.subkey }}
+
+global:
+  # Reference to one or more secrets to be used when pulling images
+  # ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+  imagePullSecrets: []
+    # - name: "image-pull-secret"
+
+  # Labels to apply to all resources
+  commonLabels: {}
 
 image:
-  repository: nginx
-  tag: 1.14.2
+  repository: public.ecr.aws/nginx/nginx
+  tag: stable-alpine-slim
   pullPolicy: IfNotPresent
 
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
-
-serviceAccount:
-  # Specifies whether a service account should be created
+## Role Based Access Control
+## Ref: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+rbac:
   create: true
-  # Annotations to add to the service account
+
+## Service Account
+## Ref: https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/
+##
+serviceAccount:
+  create: true
+  name:
+  automountServiceAccountToken: false
   annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ""
+
+## Apply horizontal pod auto scaling on hello-world pods
+## Ref: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+autoscaling:
+  enabled: false
+  annotations: {}
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 60
+  targetMemoryUtilizationPercentage: 60
+  behavior: {}
+    # scaleDown:
+    #   stabilizationWindowSeconds: 300
+    #   policies:
+    #   - type: Pods
+    #     value: 1
+    #     periodSeconds: 180
+    # scaleUp:
+    #   stabilizationWindowSeconds: 300
+    #   policies:
+    #   - type: Pods
+    #     value: 2
+    #     periodSeconds: 60
+
+deployment:
+  annotations: {}
+  replicaCount: 1
+  minReadySeconds: 0
+  strategy: {}
+    # type: RollingUpdate
+    # rollingUpdate:
+    #   maxSurge: 0
+    #   maxUnavailable: 1
+
+# A list of Kubernetes NodeSelector, if required
+# reference: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#nodeselector-v1-core
+nodeSelector:
+  kubernetes.io/os: linux
+
+# A group of Kubernetes Affinity scheduling rules, if required
+# reference: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#affinity-v1-core
+affinity: {}
+  # nodeAffinity:
+  #   requiredDuringSchedulingIgnoredDuringExecution:
+  #     nodeSelectorTerms:
+  #     - matchExpressions:
+  #       - key: foo.bar.com/role
+  #         operator: In
+  #         values:
+  #           - master
+
+# A list of Kubernetes Tolerations, if required
+# reference: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#toleration-v1-core
+tolerations: []
+  # - key: foo.bar.com/role
+  #   operator: Equal
+  #   value: master
+  #   effect: NoSchedule
