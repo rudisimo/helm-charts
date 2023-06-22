@@ -1,12 +1,16 @@
 apiVersion: v2
+appVersion: 1.1.0
+dependencies:
+  - name: nginx-ingress
+    version: 4.7.0
+    repository: https://kubernetes.github.io/ingress-nginx
 description: Helm chart used to deploy a Hello World application to Kubernetes.
-type: application
-name: hello-world
 home: https://github.com/rudisimo/helm-charts
-version: 1.0.1
-appVersion: 1.0.0
-sources:
-  - https://github.com/rudisimo/helm-charts
+name: hello-world
+kubeVersion: '>= 1.20.0-0'
 maintainers:
   - name: rudisimo
-    email: rodolfo@puig.io
+    url: https://github.com/rudisimo
+sources:
+  - https://github.com/rudisimo/helm-charts
+version: 1.0.1
